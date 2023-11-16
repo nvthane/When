@@ -1,3 +1,5 @@
+--!nonstrict
+
 local when = {}
 
 local notConnected = function()
@@ -12,22 +14,33 @@ local STRUCT_EVENT = {
 		self.Session.Task = nil
 		self.Fire = notConnected
 	end,
-	Connect = function(self, fx, condition)
-		self.Session.Task = task.spawn(function()
+	Connect = function(self, fx : number | boolean, condition : boolean)
+		self.Session.Task = coroutine.wrap(function()
 			if type(fx) ~= "function" then warn("WHEN: Connect's Input 'fx' is not a function"); return end
-			if type(condition) ~= "function" or type(condition) ~= nil then warn("WHEN: Connect's Input 'condition' is not a function"); return end
+			if type(condition) ~= "function" or condition ~= nil then warn("WHEN: Connect's Input 'condition' is not a function"); return end
 
 			if condition then
-				local status
+				self.Fire = nil
+				local status : boolean
 				repeat
-					repeat status = condition() until status == true
-                    fx()
+					if status ~= true then
+						local cache : boolean = condition()
+						if cache == true then
+							local fxCache : boolean | number = fx()
+							if type(fxCache) == "number" then
+								task.wait(fxCache)
+								status = false
+							elseif fxCache == true then
+								status = false
+							end
+						end
+					end
 				until false
 			else
 				self:Disconnect()
 				self.Fire = fx
 			end
-		end)
+		end)()
 	end,
 	Destroy = function(self)
 		self:Disconnect()
@@ -36,7 +49,7 @@ local STRUCT_EVENT = {
 }
 
 function when.new()
-    local newEvent = STRUCT_EVENT
+	local newEvent = STRUCT_EVENT
 	return
 end
 
