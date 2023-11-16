@@ -7,6 +7,7 @@ local notConnected = function()
 end
 
 local STRUCT_EVENT = {
+	Name = "Event",
 	Session = {},
 	Fire = notConnected,
 	Disconnect = function(self)
@@ -49,8 +50,8 @@ local STRUCT_EVENT = {
 }
 
 function when.new()
-	local newEvent = STRUCT_EVENT
-	return
+	local newEvent = table.clone(STRUCT_EVENT)
+	return newEvent
 end
 
 return when
