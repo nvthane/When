@@ -18,7 +18,6 @@ local STRUCT_EVENT = {
 }
 STRUCT_EVENT.__index = STRUCT_EVENT
 
--- Create a new Event
 function when.new(name : string | number | nil)
 	local event = setmetatable({
 		_handlers = {},
