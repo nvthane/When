@@ -1,0 +1,13 @@
+{
+  "name": "When",
+  "tree": {
+    "$className": "DataModel",
+    "When": {
+        "$path": "src/When.lua",
+        "Extensions": {
+          "$className": "Folder",
+          "$path": "src/Extensions"
+        }
+    }
+  }
+}
