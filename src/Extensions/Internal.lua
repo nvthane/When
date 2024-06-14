@@ -23,12 +23,12 @@ local replicatedStorage = game:GetService("ReplicatedStorage")
 function internal.handle(unlocked)
     local extraArgs = {}
     local extraArgsOnce = {}
-    local function list(fn, usage)
+    local function list(arg, usage)
         if not usage then usage = "loop" end
         if usage == "loop" then
-            table.insert(extraArgs, fn)
+            table.insert(extraArgs, arg)
         elseif usage == "once" then
-            table.insert(extraArgsOnce, fn)
+            table.insert(extraArgsOnce, arg)
         end
     end
 

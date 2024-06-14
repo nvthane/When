@@ -10,14 +10,15 @@ It doesn't have to be complicated. To install, you don't need any package manage
 
 **Hosted on Roblox**
 
-- Get When from the Roblox library.
+- Get [When](https://create.roblox.com/store/asset/17849512692) from the Roblox library.
 - Place When anywhere accessible... to both the client and the server.
 
 > Due to Roblox's issues on the backend preventing packages from being distributed, When is currently unobtainable through the Roblox library. Consider looking through the GitHub option.
 
 **Hosted on GitHub**
 
-- Obtain [When.lua](https://raw.githubusercontent.com/nvthane/When/main/When.lua) from the [Github Repository](https://github.com/nvthane/When/tree/main).
+- Obtain [When.lua](https://raw.githubusercontent.com/nvthane/When/main/src/When.lua) from the [Github Repository](https://github.com/nvthane/When/tree/main).
+- Obtain the [extensions](https://github.com/nvthane/When/tree/main/src/Extensions) as you wish.
 - Place it in a folder where modules are usually required by you.
 
 ## Creating Your First Event
